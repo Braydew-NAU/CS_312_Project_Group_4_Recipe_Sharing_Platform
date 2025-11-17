@@ -1,0 +1,15 @@
+<header class="topbar">
+  <div class="logo">
+    <h1><a href="/">PlatePal</a></h1>
+  </div>
+
+  <nav class="navbar">
+    <% if (user) { %>
+      <a href="/create" class="btn btn-primary">+ Create a Recipe</a>
+      <span class="username">Hi, <%= user.username %></span>
+      <a href="/logout" class="btn btn-secondary">Logout</a>
+    <% } else { %>
+      <a href="/signin" class="btn btn-primary">Sign In</a>
+    <% } %>
+  </nav>
+</header>

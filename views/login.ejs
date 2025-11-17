@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | RecipeShare</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <%- include('partials/header', { user }) %>
+
+  <div class="container">
+    <form action="/auth/login" method="POST" class="card">
+      <h3>Login</h3>
+      <% if (error) { %>
+        <div class="error"><%= error %></div>
+      <% } %>
+      <label>Email</label>
+      <input type="email" name="email" required>
+      <label>Password</label>
+      <input type="password" name="password" required>
+      <button type="submit">Sign In</button>
+      <div style="margin-top: 1rem;">
+        <a href="/register">Don't have an account? Sign Up</a>
+      </div>
+    </form>
+  </div>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

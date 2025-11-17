@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Recipe | PlatePal</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <div class="container">
+    <div class="auth-card">
+      <h2>Create a Recipe</h2>
+
+      <% if (error) { %>
+        <div class="error"><%= error %></div>
+      <% } %>
+
+      <form action="/recipes/create" method="POST">
+        <label>Title</label>
+        <input type="text" name="title" required>
+
+        <label>Image URL</label>
+        <input type="text" name="image_url" placeholder="https://...">
+
+        <label>Ingredients (one per line or comma separated)</label>
+        <textarea name="ingredients" rows="4" required></textarea>
+
+        <label>Instructions</label>
+        <textarea name="instructions" rows="6" required></textarea>
+
+        <label>Cuisine</label>
+        <input type="text" name="cuisine" placeholder="e.g., American">
+
+        <label>Cooking Time (minutes)</label>
+        <input type="number" name="cooking_time" min="0" value="30">
+
+        <label>Difficulty</label>
+        <select name="difficulty">
+          <option>Easy</option>
+          <option>Medium</option>
+          <option>Hard</option>
+        </select>
+
+        <label>Meal Type</label>
+        <input type="text" name="meal_type" placeholder="Breakfast, Dinner, Dessert, etc.">
+
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-top:0.5rem;">
+          Save Recipe
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

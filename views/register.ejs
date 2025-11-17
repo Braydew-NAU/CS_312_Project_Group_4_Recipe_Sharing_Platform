@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | RecipeShare</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <%- include('partials/header', { user }) %>
+
+  <div class="container">
+    <form action="/auth/register" method="POST" class="card">
+      <h3>Sign Up</h3>
+      <% if (error) { %>
+        <div class="error"><%= error %></div>
+      <% } %>
+      <label>Username</label>
+      <input type="text" name="username" required>
+      <label>Email</label>
+      <input type="email" name="email" required>
+      <label>Password</label>
+      <input type="password" name="password" required>
+      <button type="submit">Register</button>
+      <div style="margin-top: 1rem;">
+        <a href="/login">Already have an account? Sign In</a>
+      </div>
+    </form>
+  </div>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Profile | PlatePal</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <div class="container">
+    <h2>Welcome, <%= user.username %></h2>
+
+    <h3 class="section-title">Your Uploaded Recipes</h3>
+    <div class="recipe-grid">
+      <% if (uploadedRecipes && uploadedRecipes.length) { %>
+        <% uploadedRecipes.forEach(r => { %>
+          <div class="recipe-card" onclick="window.location='/recipe/<%= r.id %>'">
+            <img src="<%= r.image_url || 'https://via.placeholder.com/300x200' %>" alt="<%= r.title %>">
+            <h4><%= r.title %></h4>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p>You haven't created any recipes yet. <a href="/create">Create one now</a>!</p>
+      <% } %>
+    </div>
+
+    <h3 class="section-title">Saved Recipes</h3>
+    <div class="recipe-grid">
+      <% if (savedRecipes && savedRecipes.length) { %>
+        <% savedRecipes.forEach(r => { %>
+          <div class="recipe-card" onclick="window.location='/recipe/<%= r.id %>'">
+            <img src="<%= r.image_url || 'https://via.placeholder.com/300x200' %>" alt="<%= r.title %>">
+            <h4><%= r.title %></h4>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p>No saved recipes yet.</p>
+      <% } %>
+    </div>
+  </div>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

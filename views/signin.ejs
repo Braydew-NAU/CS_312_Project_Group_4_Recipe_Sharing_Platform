@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign In | PlatePal</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <div class="container">
+    <div class="auth-card">
+      <div class="tabs">
+        <button id="login-tab" class="active">Login</button>
+        <button id="register-tab">Register</button>
+      </div>
+
+      <!-- Login form -->
+      <form id="login-form" action="/auth/login" method="POST">
+        <% if (loginError) { %>
+          <div class="error"><%= loginError %></div>
+        <% } %>
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;">Login</button>
+      </form>
+
+      <!-- Register form -->
+      <form id="register-form" action="/auth/register" method="POST" style="display:none;">
+        <% if (registerError) { %>
+          <div class="error"><%= registerError %></div>
+        <% } %>
+        <label>Username</label>
+        <input type="text" name="username" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/signin-tabs.js"></script>
+</body>
+</html>
